@@ -1,6 +1,7 @@
 node_modules
 .env
-build/
+build/contracts/*
+!build/contracts/ZNFT.json
 .vscode/
 soljson*
 package-lock.json

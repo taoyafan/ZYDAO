@@ -36,7 +36,6 @@ function saveToJson(name, date, network='development') {
         const jsonStringFromRead = fs.readFileSync(file);
         json = JSON.parse(jsonStringFromRead);
     } catch(err) {
-        console.log(err)
         json = {}
     }
 
