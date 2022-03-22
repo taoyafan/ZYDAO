@@ -6,7 +6,7 @@ This repository contain two contents:
 
 2. NodeJs sample of calling contracts.
 
-If you only need the js samples, you don't need to setup contracts. Fouce nodejs part is enough.
+If you only need the JS samples, you don't need to setup contracts. Fouce nodejs part is enough.
 
 ## Contracts (Under folder contracts)
 
@@ -48,7 +48,7 @@ After migratation, contracts address will overwrite the old one in contracts/add
 
 ### Contents
 
-(1) Js wrapper of ZNFT see node/samples/ZNFTWrapper.js;
+(1) JS wrapper of ZNFT see node/samples/ZNFTWrapper.js;
 
 (2) JS samples calling contracts under node/samples folder;
 
