@@ -4,6 +4,8 @@
   "description": "ZYDAO contracts",
   "main": "index.js",
   "scripts": {
+    "m:dev": "truffle migrate",
+    "m:test": "truffle migrate --network bsctest",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
