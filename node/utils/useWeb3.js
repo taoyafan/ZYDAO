@@ -9,7 +9,7 @@ function useWeb3(network='dev', isUseAccount=true) {
 
     if (isUseAccount) {
         const provider = new HDWalletProvider({
-            privateKeys: [info.adminKey],
+            privateKeys: [info.minterKey],
             providerOrUrl: info.RPC,
             numberOfAddresses: 1,
             pollingInterval: 60000

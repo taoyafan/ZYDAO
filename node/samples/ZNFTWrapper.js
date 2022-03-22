@@ -19,7 +19,7 @@ class ZNFTWrapper {
     // toAddresses: [user1 address, user2 address, user3 address, ...]
     async mint(toAddresses) {
         try {
-            await this.znft.methods.mint(toAddresses).send({from: this.info.adminAddress});
+            await this.znft.methods.mint(toAddresses).send({from: this.info.minterAddress});
         } catch (e) {
             console.error(e);
         }
@@ -69,7 +69,7 @@ class ZNFTWrapper {
 }
 
 // This is test code
-async function test() {
+async function test(network) {
     // Create ZNFT js class instance
     const znft = new ZNFTWrapper('dev');
 
@@ -78,27 +78,21 @@ async function test() {
     console.log(`Total supply before mint is ${+totalSupply}`)
 
     // Mint 2 token for admin(can be any other user addresses) 
-    await znft.mint([znft.info.adminAddress, znft.info.adminAddress])
+    await znft.mint([znft.info.minterAddress, znft.info.minterAddress])
 
     // Check total supply after mint
     totalSupply = await znft.totalSupply();
     console.log(`Total supply after mint 2 token is ${+totalSupply}`)
 
-    const adminAllToken = await znft.userAllTokens(znft.info.adminAddress);
+    const adminAllToken = await znft.userAllTokens(znft.info.minterAddress);
     console.log(`Admin all nfts: ${adminAllToken}`)
 }
 
 // To test, Directly call "node createAccounts.js" in this direction
 if (require.main === module) {
-    test();
-
-    // (async function main() {
-    //     await new Promise((resolve) => {
-    //         console.log(1);
-    //         for(let i=0; i<5000000000; i++) {} 
-    //         console.log(2);
-    //     });
-    // }) ();
+    test().then(() => {
+        console.log("Test finished")
+    })
 }
 
 module.exports = ZNFTWrapper

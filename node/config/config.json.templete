@@ -1,16 +1,16 @@
 {
   "dev": {
     "RPC": "127.0.0.1:8545/",
-    "adminAddress": "",   // Admin address on dev
-    "adminKey": "",       // Admin private key on dev
+    "minterAddress": "",   // Admin address on dev
+    "minterKey": "",       // Admin private key on dev
     "contracts": {
         "ZNFT": ""        // ZNFT address on dev
     }
   },
   "bsctest": {
     "RPC": "https://data-seed-prebsc-2-s2.binance.org:8545/",
-    "adminAddress": "0xBBbe46a44554E22a55b7C3031d24f05a71b51397",
-    "adminKey": "",       // Admin private key on bsctest
+    "minterAddress": "0xBBbe46a44554E22a55b7C3031d24f05a71b51397",
+    "minterKey": "",       // Admin private key on bsctest
     "contracts": {
         "ZNFT": "0xb2c038dB20796C7cA98D2c6C7E2990a043EC84c3"
     }
