@@ -63,7 +63,7 @@ class ZNFTWrapper {
         // for (let i = 0; i < nums; i++) {
         //     const tokenId = await this.tokenOfOwnerByIndex(address, i);
         //     allTokens.push(tokenId);
-        //     console.log(`Get token id of index ${i}`)
+        //     // console.log(`Get token id of index ${i}`)
         // }
 
         return allTokens
@@ -79,7 +79,7 @@ async function test(network='dev') {
     let totalSupply = await znft.totalSupply();
     console.log(`Total supply before mint is ${+totalSupply}`)
 
-    // Mint 2 token for admin(can be any other user addresses) 
+    // Mint 2 token for minter(can be any other user addresses) 
     await znft.mint([znft.info.minterAddress, znft.info.minterAddress])
 
     // Check total supply after mint
@@ -87,10 +87,10 @@ async function test(network='dev') {
     console.log(`Total supply after mint 2 token is ${+totalSupply}`)
 
     const adminAllToken = await znft.userAllTokens(znft.info.minterAddress);
-    console.log(`Admin all nfts: ${adminAllToken}`)
+    console.log(`Minter all nfts: ${adminAllToken}`)
 }
 
-// To test, Directly call "node createAccounts.js" in this direction
+// To test, Directly call "node ZNFTWrapper.js" in this direction
 if (require.main === module) {
     console.log("Test started");
 
