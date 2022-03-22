@@ -8,9 +8,11 @@ class ZNFTWrapper {
 
     constructor(network) {
         const web3 = useWeb3(network);
+        const web3NoAccount = useWeb3(network, false);  // Used for all read interface
 
         this.info = getConfig(network);
         this.znft = new web3.eth.Contract(ZNFT.abi, this.info.contracts.ZNFT);
+        this.znftNoAccount = new web3NoAccount.eth.Contract(ZNFT.abi, this.info.contracts.ZNFT);
     }
     
     /* ==================================== Write ==================================== */
@@ -29,17 +31,17 @@ class ZNFTWrapper {
 
     // Total nfts num.
     async totalSupply() {
-        return +await this.znft.methods.totalSupply().call();
+        return +await this.znftNoAccount.methods.totalSupply().call();
     }
     
     // User's nfts num.
     async balanceOf(address) {
-        return +await this.znft.methods.balanceOf(address).call();
+        return +await this.znftNoAccount.methods.balanceOf(address).call();
     }
 
     // The index nft of owner. It should less than user's balance.
     async tokenOfOwnerByIndex(address, index) {
-        return +await this.znft.methods.tokenOfOwnerByIndex(address, index).call();
+        return +await this.znftNoAccount.methods.tokenOfOwnerByIndex(address, index).call();
     }
     
     /* ==================================== Read wrappers ==================================== */
@@ -68,10 +70,10 @@ class ZNFTWrapper {
     }
 }
 
-// This is test code
-async function test(network) {
+// This is test code, network should be dev or bsctest
+async function test(network='dev') {
     // Create ZNFT js class instance
-    const znft = new ZNFTWrapper('dev');
+    const znft = new ZNFTWrapper(network);
 
     // Check total supply before mint
     let totalSupply = await znft.totalSupply();
@@ -90,8 +92,14 @@ async function test(network) {
 
 // To test, Directly call "node createAccounts.js" in this direction
 if (require.main === module) {
-    test().then(() => {
-        console.log("Test finished")
+    console.log("Test started");
+
+    // test('dev').then(() => {
+    //     console.log("Test finished");
+    // })
+
+    test('bsctest').then(() => {
+        console.log("Test finished");
     })
 }
 

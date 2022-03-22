@@ -33,9 +33,9 @@ function createAccounts(num = 1, network = "dev") {
 
 // This is test code
 function test() {
-    createAccounts(1, "dev");
+    // createAccounts(1, "dev");
     createAccounts(1, "bsctest");
-    createAccounts(2, "dev");
+    // createAccounts(2, "dev");
     createAccounts(2, "bsctest");
 }
 
